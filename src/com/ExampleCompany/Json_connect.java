@@ -15,7 +15,8 @@ import org.json.JSONObject;
 public class Json_connect {
     public String username;
     //public String
-
+    //This retrieves the database data that finds the usernames and password thar are stored on the server
+    //and checks to see if they are the correct ones.
     public String login(String usr, String pass) throws Exception {
         String return1;
         String url = "http://impresserve.co.uk/oop/election.php?method=get&username=" + usr;
@@ -38,8 +39,15 @@ public class Json_connect {
 
         return return1;
     }
-
+//These are connecting to the database in order to place the votes
     public String placeVote(String url) throws Exception {
+        JSONObject json = readJsonFromUrl(url);
+        String response1 = json.get("result").toString();
+        return response1;
+    }
+
+
+    public String reveiwVoting(String url) throws Exception {
         JSONObject json = readJsonFromUrl(url);
         String response1 = json.get("result").toString();
         return response1;

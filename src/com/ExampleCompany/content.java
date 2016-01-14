@@ -188,6 +188,38 @@ public class content {
         return content;
     }
 
+    //reason panel
+    public JPanel results() {
+        JPanel content = new JPanel();
+
+        content.setPreferredSize(new Dimension(400, 400));
+        content.setBackground(Color.white);
+        Json_connect connect = new Json_connect();
+        String Cand1 ="";
+        String Cand2 ="";
+        String Cand3 ="";
+        try {
+        //In this part we are getting the jason and retrieving data from the database in order to find out how many
+            //votes each person has. The below part also brings up each string and displays it to show votes.
+             Cand1 = connect.placeVote("http://impresserve.co.uk/oop/election.php?method=review&voted=1");
+            System.out.println(Cand1);
+             Cand2 = connect.placeVote("http://impresserve.co.uk/oop/election.php?method=review&voted=2");
+            System.out.println(Cand2);
+             Cand3 = connect.placeVote("http://impresserve.co.uk/oop/election.php?method=review&voted=3");
+            System.out.println(Cand3);
+        }catch (Exception ex) {
+            System.out.println("Could not run");
+        }
+        JLabel home_text = new JLabel("The results so far:");
+        JLabel home_ln1 = new JLabel("John:" + Cand1);
+        JLabel home_ln2 = new JLabel("Mary:" + Cand2);
+        JLabel home_ln3 = new JLabel("Jane:" + Cand3);
+        content.add(home_text);
+        content.add(home_ln1);
+        content.add(home_ln2);
+        content.add(home_ln3);
+        return content;
+    }
 
     public static void sendGet(String username) throws Exception {
 
